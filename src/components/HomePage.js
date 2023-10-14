@@ -87,10 +87,6 @@ const InnerVideo = styled.video`
 `;
 
 const TelevisionContainer2 = styled(TelevisionContainer)`
-  position: relative;
-  width: 600px;
-  height: 400px;
-
   &::before {
     content: "";
     background: url(${(props) => props.televisionImage}) no-repeat center;
@@ -103,7 +99,6 @@ const TelevisionContainer2 = styled(TelevisionContainer)`
     z-index: 2;
   }
 `;
-
 const InnerVideo2 = styled(InnerVideo)`
   width: 50%; // Televizyonun içine sığdırmak için
   height: 60%; // Televizyonun içine sığdırmak için
@@ -282,13 +277,15 @@ function AnaSayfa() {
       <TopContainer>
         <Logo src={NetflixLogo} alt="Netflix Logo" />
         <Title>Herkes burada!</Title>
-        <Description>
-          Favori oyuncunuz, en yakın arkadaşınız, karşı komşunuz. Tabii filmin,
-          dizinin ve belgeselin âlâsı da.
-        </Description>
+        <DescriptionContainer className="row">
+          <Description className="col-md-12">
+            Favori oyuncunuz, en yakın arkadaşınız, karşı komşunuz. Tabii
+            filmin, dizinin ve belgeselin âlâsı da.
+          </Description>
+        </DescriptionContainer>
       </TopContainer>
       <BottomContainer>
-        <DescriptionContainer>
+        <DescriptionContainer className="row">
           {[
             {
               text: "Televizyonunuzda izleyin...",
@@ -313,13 +310,17 @@ function AnaSayfa() {
               const TelevisionComp = item.TelevisionContainerComponent;
               const VideoComp = item.InnerVideoComponent;
               return (
-                <Description key={index}>
+                <Description className="col-12 col-md-10 col-lg-8 mx-auto">
                   {item.text}
-                  <TelevisionComp televisionImage={item.televisionImage}>
-                    <VideoComp autoPlay loop muted>
-                      <source src={item.videoSource} type="video/mp4" />
-                    </VideoComp>
-                  </TelevisionComp>
+                  <div className="row">
+                    <div className="col-12 col-lg-6">
+                      <TelevisionComp televisionImage={item.televisionImage}>
+                        <VideoComp autoPlay loop muted>
+                          <source src={item.videoSource} type="video/mp4" />
+                        </VideoComp>
+                      </TelevisionComp>
+                    </div>
+                  </div>
                 </Description>
               );
             } else {
@@ -367,9 +368,13 @@ function AnaSayfa() {
           </FaqItem>
         </FaqContainer>
 
-        <EmailInputContainer>
-          <EmailInput type="email" placeholder="E-posta adresi" />
-          <SubscribeButton>Başlayın</SubscribeButton>
+        <EmailInputContainer className="row">
+          <div className="col-md-8 col-sm-12">
+            <EmailInput type="email" placeholder="E-posta adresi" />
+          </div>
+          <div className="col-md-4 col-sm-12">
+            <SubscribeButton>Başlayın</SubscribeButton>
+          </div>
         </EmailInputContainer>
       </BottomContainer>
     </HomePageContainer>
