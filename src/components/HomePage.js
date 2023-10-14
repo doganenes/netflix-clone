@@ -271,7 +271,7 @@ const FaqItem = styled.div`
   }
 `;
 
-function AnaSayfa() {
+function HomePage() {
   return (
     <HomePageContainer>
       <TopContainer>
@@ -368,17 +368,13 @@ function AnaSayfa() {
           </FaqItem>
         </FaqContainer>
 
-        <EmailInputContainer className="row">
-          <div className="col-md-8 col-sm-12">
-            <EmailInput type="email" placeholder="E-posta adresi" />
-          </div>
-          <div className="col-md-4 col-sm-12">
-            <SubscribeButton>Başlayın</SubscribeButton>
-          </div>
+        <EmailInputContainer>
+          <EmailInput type="email" placeholder="E-posta adresi" />
+          <SubscribeButton>Başlayın</SubscribeButton>
         </EmailInputContainer>
       </BottomContainer>
     </HomePageContainer>
   );
 }
 
-export default AnaSayfa;
+export default HomePage;
