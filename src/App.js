@@ -8,12 +8,15 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
+        <Route path="/" element={<HomePage />} />{" "}
+        {/* Ana sayfaya yönlendirme */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
