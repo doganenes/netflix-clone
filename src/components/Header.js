@@ -1,4 +1,3 @@
-// components/Header.js
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -10,7 +9,10 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5); /* Şeffaflık ekledim */
+  position: fixed; /* Header sabitlenir */
+  width: 100%;
+  z-index: 1000; /* Diğer bileşenlerin üzerinde görünmesini sağlar */
 `;
 
 const Logo = styled.img`
@@ -23,20 +25,29 @@ const Navigation = styled.div`
   gap: 1rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white; /* Linkler için beyaz renk */
+  transition: color 0.3s ease; /* Geçiş efekti */
+
+  &:hover {
+    color: #e50914; /* Fare üzerine geldiğinde Netflix kırmızısı olacak */
+  }
+`;
+
 function Header() {
   return (
     <HeaderContainer>
-      <Link to="/">
+      <StyledLink to="/">
         <Logo src={NetflixLogo} alt="Netflix Logo" />
-      </Link>
+      </StyledLink>
       <Navigation>
-        <Link to="/login">
+        <StyledLink to="/login">
           <Button>Giriş Yap</Button>
-        </Link>
-        <Link to="/signup">
-          <Button primary>Kayıt Ol</Button>{" "}
-          {/* 'primary' prop'u daha belirgin bir stil için eklenmiştir. */}
-        </Link>
+        </StyledLink>
+        <StyledLink to="/signup">
+          <Button primary>Kayıt Ol</Button>
+        </StyledLink>
       </Navigation>
     </HeaderContainer>
   );
